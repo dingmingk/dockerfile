@@ -6,12 +6,12 @@ ENV MAVEN_HOME /usr/share/maven
 
 RUN mkdir -p $MAVEN_HOME \
   && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
-    | tar -xzC $MAVEN_HOME --strip-components=1 \
+    | tar -xzC $MAVEN_HOME --strip-components=1 
 
 ENV PATH $PATH:$MAVEN_HOME/bin
+WORKDIR /project
 
 VOLUME /root/.m2
-WORKDIR /project
 
 ENTRYPOINT ["mvn"]
 CMD ["-h"]
