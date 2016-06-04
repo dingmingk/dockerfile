@@ -2,6 +2,7 @@ FROM java:openjdk-8-jdk
 MAINTAINER dingmingk <dingmingk@gmail.com>
 
 ENV GRADLE_VERSION 2.6
+ENV GRADLE_HOME /gradle
 
 RUN curl -sLO https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip \
   && unzip gradle-${GRADLE_VERSION}-all.zip \
@@ -9,7 +10,6 @@ RUN curl -sLO https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}
   && rm gradle-${GRADLE_VERSION}-all.zip \
   && chmod -R 777 $GRADLE_HOME
 
-ENV GRADLE_HOME /gradle
 ENV PATH $PATH:$GRADLE_HOME/bin
 ENV GRADLE_USER_HOME /project/.gradle
 
